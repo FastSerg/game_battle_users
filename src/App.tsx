@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Battle from 'Components/Battle'
+import Home from 'Components/Home'
+import NavBar from 'Components/NavBar'
+import NoMatch from 'Components/NoMatch'
+import Popular from 'Components/Popular/Popular'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <div className="container">
+                <NavBar />
+
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="popular" element={<Popular />} />
+                    <Route path="battle" element={<Battle />} />
+                    <Route path="*" element={<NoMatch />} />
+                </Routes>
+            </div>
+        </BrowserRouter>
+    )
 }
 
-export default App;
+export default App
