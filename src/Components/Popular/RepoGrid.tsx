@@ -1,5 +1,6 @@
 import { repositoriesProps } from 'Components/api'
 import React from 'react'
+import Preloader from './Preloader'
 
 type Props = {
     repositories: repositoriesProps[]
@@ -32,10 +33,7 @@ const RepoGrid = ({ repositories, loading }: Props) => {
                         )
                     })
                 ) : (
-                    <li className="box-circle">
-                        <img src={'/Img/loader.svg'} alt="" width={'50px'} />
-                        ...Loading
-                    </li>
+                    <Preloader />
                 )}
             </ul>
         </>

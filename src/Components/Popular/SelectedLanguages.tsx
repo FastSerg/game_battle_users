@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
 const languages: string[] = [
     'All',
     'Javascript',
@@ -11,18 +11,24 @@ const languages: string[] = [
 type Props = {
     languageSate: string
     onSelectLanguage: (language: string) => void
+    searchParam: any
 }
 
-const SelectedLanguages = ({ languageSate, onSelectLanguage }: Props) => {
+const SelectedLanguages = ({
+    languageSate,
+    onSelectLanguage,
+    searchParam,
+}: Props) => {
     return (
         <ul className="languages">
             {languages.map((language, i) => (
-                <li
-                    key={i}
-                    className={language === languageSate ? 'active' : ''}
-                    onClick={() => onSelectLanguage(language)}
-                >
-                    {language}
+                <li key={i} onClick={() => onSelectLanguage(language)}>
+                    <Link
+                        to={searchParam}
+                        className={language === languageSate ? 'active' : ''}
+                    >
+                        {language}
+                    </Link>
                 </li>
             ))}
         </ul>

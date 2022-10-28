@@ -37,6 +37,12 @@
 .box-circle {
   display: flex;
   align-items:center;
+  font-size: 22px;
   gap: 10px;
+}
+
+.active {
+  color: rgb(0, 0, 255);
+  font-weight: bold;
 }
 
