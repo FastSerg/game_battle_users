@@ -9,23 +9,18 @@ const languages: string[] = [
 ]
 
 type Props = {
-    languageSate: string
     onSelectLanguage: (language: string) => void
-    searchParam: any
+    categoryQuery: string
 }
 
-const SelectedLanguages = ({
-    languageSate,
-    onSelectLanguage,
-    searchParam,
-}: Props) => {
+const SelectedLanguages = ({ onSelectLanguage, categoryQuery }: Props) => {
     return (
         <ul className="languages">
             {languages.map((language, i) => (
                 <li key={i} onClick={() => onSelectLanguage(language)}>
                     <Link
-                        to={searchParam}
-                        className={language === languageSate ? 'active' : ''}
+                        to={language}
+                        className={language === categoryQuery ? 'active' : ''}
                     >
                         {language}
                     </Link>

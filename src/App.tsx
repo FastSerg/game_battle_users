@@ -1,4 +1,5 @@
-import Battle from 'Components/Battle'
+import Battle from 'Components/Battle/Battle'
+import Results from 'Components/Battle/Results'
 import Home from 'Components/Home'
 import NavBar from 'Components/NavBar'
 import NoMatch from 'Components/NoMatch'
@@ -15,6 +16,7 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="popular" element={<Popular />} />
                     <Route path="battle" element={<Battle />} />
+                    <Route path="battle/results" element={<Results />} />
                     <Route path="*" element={<NoMatch />} />
                 </Routes>
             </div>

@@ -13,32 +13,30 @@ const Popular = (props: Props) => {
     const [repositories, setRepositories] = useState<repositoriesProps[]>([])
     const [searchParam, setSearchParam] = useSearchParams()
     const [comparisonState, setComparisonState] = useState<boolean>(false)
+    const categoryQuery = searchParam.get('category') || 'All'
 
     useEffect(() => {
         if (!comparisonState) {
-            fetchPopularRepos(languageSate).then((repos) => {
+            fetchPopularRepos(categoryQuery).then((repos) => {
                 setLoading(true)
                 setRepositories(repos)
             })
         }
-    }, [languageSate, comparisonState])
+    }, [comparisonState, categoryQuery])
 
     const onSelectLanguage = (language: string) => {
         languageSate === language
             ? setComparisonState(true)
             : setComparisonState(false)
-        setLanguageSate(language)
-        setSearchParam(language)
+        setLanguageSate(categoryQuery)
+        setSearchParam(`?category=${language}`)
     }
-
-    console.log(searchParam)
 
     return (
         <>
             <SelectedLanguages
-                languageSate={languageSate}
                 onSelectLanguage={onSelectLanguage}
-                searchParam={searchParam}
+                categoryQuery={categoryQuery}
             />
             <RepoGrid repositories={repositories} loading={loading} />
         </>
