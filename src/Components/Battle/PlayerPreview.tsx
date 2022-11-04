@@ -3,7 +3,7 @@ import React from 'react'
 type Props = {
     playerOneImg: string
     playerOne: string
-    children: React.ReactNode
+    children?: React.ReactNode
 }
 
 const PlayerPreview = ({ playerOneImg, playerOne, children }: Props) => {

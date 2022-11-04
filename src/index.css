@@ -13,3 +13,26 @@ code {
     monospace;
 }
 
+/* :root {
+  --color-background: rgb(230, 230, 230);
+  --color-font: black;
+} */
+
+html[data-theme="dark"] {
+  --color-background: black;
+  --color-font: white;
+  --color-link: rgba(215, 36, 36,0.5);
+  --color-active-link:rgba(215, 36, 36, 0.9);
+  --color-background-button:#dcd5d5;
+
+  --color-font-button:#0a0a0a;
+}
+
+html[data-theme="light"] {
+  --color-background: white;
+  --color-font: black;
+  --color-link: rgba(0, 0, 255, 0.5);
+  --color-active-link:rgba(8, 8, 203, 0.9);
+  --color-background-button:#0a0a0a;
+  --color-font-button:#e6e6e6;
+}
