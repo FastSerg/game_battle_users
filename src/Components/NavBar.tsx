@@ -5,9 +5,7 @@ import { useColorTheme } from './Theme'
 const navLinks: string[] = ['Home', 'Popular', 'Battle']
 
 type Props = {}
-const isDarkTheme = window?.matchMedia('(prefers-color-scheme: dark)').matches
-const defaultTheme = isDarkTheme ? 'dark' : 'light'
-console.log(defaultTheme)
+
 const NavBar = (props: Props) => {
     const { colorTheme, setColorTheme } = useColorTheme('')
 
@@ -32,7 +30,7 @@ const NavBar = (props: Props) => {
                 </ul>
                 <div>
                     <button onClick={() => onChangeTheme()} className={'theme'}>
-                        {colorTheme}
+                        Change theme: {colorTheme}
                     </button>
                 </div>
             </div>

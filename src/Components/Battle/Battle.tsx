@@ -44,10 +44,7 @@ const Battle = (props: Props) => {
                         onSubmit={handleSubmit}
                     />
                 ) : (
-                    <PlayerPreview
-                        playerOneImg={playerOneImg}
-                        playerOne={playerOne}
-                    >
+                    <PlayerPreview playerImg={playerOneImg} player={playerOne}>
                         <button
                             className="reset"
                             onClick={() => handleReset('playerOne')}
@@ -64,10 +61,7 @@ const Battle = (props: Props) => {
                         onSubmit={handleSubmit}
                     />
                 ) : (
-                    <PlayerPreview
-                        playerOneImg={playerTwoImg}
-                        playerOne={playerTwo}
-                    >
+                    <PlayerPreview playerImg={playerTwoImg} player={playerTwo}>
                         <button
                             className="reset"
                             onClick={() => handleReset('playerTwo')}
@@ -79,15 +73,17 @@ const Battle = (props: Props) => {
             </div>
 
             {playerOneImg && playerTwoImg && (
-                <Link
-                    className="button"
-                    to={{
-                        pathname: `${location.pathname}/results`,
-                        search: `?playerOne=${playerOne}&playerTwo=${playerTwo}`,
-                    }}
-                >
-                    Battle
-                </Link>
+                <div className="row">
+                    <Link
+                        className="button"
+                        to={{
+                            pathname: `${location.pathname}/results`,
+                            search: `?playerOne=${playerOne}&playerTwo=${playerTwo}`,
+                        }}
+                    >
+                        Battle
+                    </Link>
+                </div>
             )}
         </div>
     )

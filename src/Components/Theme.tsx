@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useLayoutEffect } from 'react'
 
 type Props = {}
 const isDarkTheme = window?.matchMedia('(prefers-color-scheme: dark)').matches
@@ -9,7 +9,7 @@ export const useColorTheme = (props: Props) => {
         localStorage.getItem('app-theme') || defaultTheme
     )
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         document.documentElement.setAttribute('data-theme', colorTheme)
         localStorage.setItem('app-theme', colorTheme)
     }, [colorTheme])

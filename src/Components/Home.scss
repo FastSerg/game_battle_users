@@ -2,11 +2,13 @@ body {
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
   background-color:var(--color-background);
   color:var(--color-font);
+  transition: all 500ms linear;
 }
 
 a {
   text-decoration: none;
   color: var(--color-link);
+  transition: all 500ms linear;
 }
 
 ul {
@@ -33,6 +35,7 @@ li {
   display: block;
   padding: 7px 0;
   margin: 10px auto;
+  transition: all 500ms linear;
 }
 
 .button:hover:enabled {
@@ -68,11 +71,20 @@ li {
 .row {
   display: flex;
   justify-content: space-around;
+  margin-top: 60px;
+
 }
 
 .active {
   color: var(--color-active-link);
   font-weight: bold;
+  padding: 0 7px;
+  transition: all 700ms linear;
+  text-shadow: 
+	3px 1px 0 var(--color-font-shadow), 
+	3px 2px 2px var(--color-font-shadow), 
+	4px 3px 3px var(--color-font-shadow) 
+
 }
 
 .column {
@@ -119,10 +131,30 @@ li {
 
 .theme {
   padding: 7px 10px;
-  border-radius:20%;
   border:none;
   background-color:var(--color-link);
   letter-spacing: 1.5px;
-  color: var(--color-font);
+  color: white;
   cursor:pointer;
+  transition: all 1s linear;
+
+}
+
+.text-message {
+  font-size: 28px;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.cart-player {
+  background-color:var(--color-background-cart);
+  padding: 20px;
+  box-shadow: 0px 20px 40px 10px var(--color-background-cart-shadow);
+}
+
+.cart-player li {
+  font-size: 18px;
+  letter-spacing: 1.5px;
+  padding-top: 7px;
 }

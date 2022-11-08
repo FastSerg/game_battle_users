@@ -1,17 +1,17 @@
 import React from 'react'
 
 type Props = {
-    playerOneImg: string
-    playerOne: string
+    playerImg: string
+    player: string
     children?: React.ReactNode
 }
 
-const PlayerPreview = ({ playerOneImg, playerOne, children }: Props) => {
+const PlayerPreview = ({ playerImg, player, children }: Props) => {
     return (
-        <div>
+        <div className="cart-player">
             <div className="column">
-                <img src={playerOneImg} alt="Avatar" className="avatar" />
-                <h2 className="userName">{playerOne}</h2>
+                <img src={playerImg} alt="Avatar" className="avatar" />
+                <h2 className="userName">{player}</h2>
             </div>
             {children}
         </div>
