@@ -4,25 +4,26 @@ import RepoGrid from './RepoGrid'
 import SelectedLanguages from './SelectedLanguages'
 import './Popular.scss'
 import { useSearchParams } from 'react-router-dom'
+import { useAppDispatch, useAppSelector } from 'Components/redux/hooks'
+import { fetchPopularRepos2 } from 'Components/redux/popularReduser'
 
 type Props = {}
 
 const Popular = (props: Props) => {
     const [languageSate, setLanguageSate] = useState<string>('All')
     const [loading, setLoading] = useState<boolean>(false)
-    const [repositories, setRepositories] = useState<repositoriesProps[]>([])
     const [searchParam, setSearchParam] = useSearchParams()
     const [comparisonState, setComparisonState] = useState<boolean>(false)
     const categoryQuery = searchParam.get('category') || 'All'
 
+    const dispatch = useAppDispatch()
+
     useEffect(() => {
         if (!comparisonState) {
-            fetchPopularRepos(categoryQuery).then((repos) => {
-                setLoading(true)
-                setRepositories(repos)
-            })
+            setLoading(true)
+            dispatch(fetchPopularRepos2(languageSate))
         }
-    }, [comparisonState, categoryQuery])
+    }, [dispatch, comparisonState, languageSate])
 
     const onSelectLanguage = (language: string) => {
         languageSate === language
@@ -38,7 +39,7 @@ const Popular = (props: Props) => {
                 onSelectLanguage={onSelectLanguage}
                 categoryQuery={categoryQuery}
             />
-            <RepoGrid repositories={repositories} loading={loading} />
+            <RepoGrid loading={loading} />
         </>
     )
 }

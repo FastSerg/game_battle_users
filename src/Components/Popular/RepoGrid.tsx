@@ -1,17 +1,18 @@
-import { repositoriesProps } from 'Components/api'
+import { useAppSelector } from 'Components/redux/hooks'
 import React from 'react'
 import Preloader from './Preloader'
 
 type Props = {
-    repositories: repositoriesProps[]
     loading: boolean
 }
-const RepoGrid = ({ repositories, loading }: Props) => {
+const RepoGrid = ({ loading }: Props) => {
+    const repos = useAppSelector((state) => state.popularState)
+
     return (
         <>
             <ul className="popular-list">
                 {loading ? (
-                    repositories.map((repo, i) => {
+                    repos.map((repo, i) => {
                         return (
                             <li key={repo.id} className="popular-item">
                                 <div className="popular-rank">#{i + 1}</div>
