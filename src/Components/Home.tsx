@@ -1,5 +1,4 @@
 import './Home.scss'
-
 type Props = {}
 
 const Home = (props: Props) => {

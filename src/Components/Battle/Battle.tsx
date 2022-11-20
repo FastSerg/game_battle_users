@@ -35,7 +35,7 @@ const Battle = (props: Props) => {
     }
 
     return (
-        <div className="container">
+        <>
             <div className="row">
                 {!playerOneImg ? (
                     <PlayerInput
@@ -85,7 +85,7 @@ const Battle = (props: Props) => {
                     </Link>
                 </div>
             )}
-        </div>
+        </>
     )
 }
 
