@@ -162,6 +162,7 @@ li {
   min-height: 50vh;
   align-items: center;
   justify-content: center;
+  flex-direction: column
 }
 
 .clock span {
@@ -193,7 +194,7 @@ li {
 .home-title{
   text-align: center;
   font-size: 40px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 @media (max-width:780px) {

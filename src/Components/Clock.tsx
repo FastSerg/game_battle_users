@@ -29,9 +29,13 @@ const Clock = (props: Props) => {
         }, 1000)
     }, [])
     return (
-        <div className="clock">
-            <span>{`${date.hours} : ${date.minutes} : ${date.seconds}`}</span>
-        </div>
+        <>
+            <div className="clock">
+                {' '}
+                <h2 className="home-title">Time to game</h2>
+                <span>{`${date.hours} : ${date.minutes} : ${date.seconds}`}</span>
+            </div>
+        </>
     )
 }
 
