@@ -27,6 +27,7 @@
 .languages {
   display: flex;
   justify-content: center;
+  padding: 0 20px;
 }
 
 .languages li {
@@ -43,4 +44,13 @@
 }
  
  
-
+@media (max-width:780px) {
+  .languages {
+    flex-wrap: wrap;
+  }
+  
+  .popular-list {
+    justify-content: center;
+    align-items:center;
+  }
+}

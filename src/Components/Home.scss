@@ -92,8 +92,8 @@ li {
 .column {
   display: flex;
   flex-direction: column;
- 
   align-items: center;
+   
 }
 
 .column input {
@@ -139,7 +139,6 @@ li {
   color: white;
   cursor:pointer;
   transition: all 1s linear;
-
 }
 
 .text-message {
@@ -153,8 +152,31 @@ li {
   background-color:var(--color-background-cart);
   padding: 20px;
   box-shadow: 0px 20px 40px 10px var(--color-background-cart-shadow);
-     width: 100%;
-   max-width: 500px;
+  width: 100%;
+  max-width: 500px; 
+ 
+}
+
+.clock {
+  display: flex;
+  min-height: 50vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.clock span {
+  font-size: 80px;
+  padding: 15px;
+  font-weight: 600;
+  letter-spacing: 2.9px; 
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+  box-shadow: 0px 20px 40px 10px var(--color-background-cart-shadow);
+  text-shadow: 
+	3px 1px 0 var(--color-font-shadow), 
+	5px 3px 5px var(--color-font-shadow), 
+	6px 4px 8px var(--color-font-shadow) 
 }
 
 .cart-player li {
@@ -163,14 +185,54 @@ li {
   padding-top: 7px;
 }
 
+.container h1 {
+  margin-bottom: 10px;
+
+}
+
+.home-title{
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 10px;
+}
 
 @media (max-width:780px) {
-
   .row {
     flex-direction: column;
     justify-content: center;
     align-items:center;
     gap: 60px;
+  }
 
+  .theme {
+    font-size: 10px;
+    padding: 7px 10px;
+  }
+  .column input {
+    font-size: 12px;
+  }
+  .column label {
+    font-size: 22px;
+  }
+  .button {
+    font-size: 12px;
+    max-width: 120px;
+  }
+  .cart-player {
+    padding: 10px;
+    max-width: 300px; 
+  }
+  .clock span {
+    font-size: 40px;
+    letter-spacing: 1.9px; 
+    max-width: 230px;
+    min-width: 215px;
+  }
+  .container h1 {
+    font-size: 20px;
+
+  }
+  .home-title{
+    font-size: 20px;
   }
 }

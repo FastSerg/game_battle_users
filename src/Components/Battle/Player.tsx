@@ -44,7 +44,7 @@ const Player = ({
                     </li>
                 )}
             </ul>
-            <h2 className="error">Score: {scorePlayer}</h2>
+            <h2 className="text-message">Score: {scorePlayer}</h2>
         </PlayerPreview>
     )
 }

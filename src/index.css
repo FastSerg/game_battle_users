@@ -14,6 +14,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+h1,h2 {
+  margin: 0;
+}
  
 html[data-theme="dark"] {
   --color-background: black;
@@ -34,7 +38,7 @@ html[data-theme="light"] {
   --color-active-link:rgba(8, 8, 203, 0.9);
   --color-background-button:#0a0a0a;
   --color-background-cart:rgb(212, 207, 207);
-  --color-background-cart-shadow:#1f2223;
+  --color-background-cart-shadow:#231f20;
   --color-font-button:#e6e6e6;
   --color-font-shadow: rgba(0, 0, 0,0.3);
 
