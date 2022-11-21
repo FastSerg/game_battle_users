@@ -2,12 +2,10 @@ import { useAppSelector } from 'Components/redux/hooks'
 import React from 'react'
 import Preloader from './Preloader'
 
-type Props = {
-    loading: boolean
-}
-const RepoGrid = ({ loading }: Props) => {
-    const repos = useAppSelector((state) => state.popularState)
-
+type Props = {}
+const RepoGrid = (props: Props) => {
+    const repos = useAppSelector((state) => state.popularReposState)
+    const loading = useAppSelector((state) => state.optionsSelected.loading)
     return (
         <>
             <ul className="popular-list">
