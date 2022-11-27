@@ -1,11 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
+import battleReduser from "./battleReduser";
 import fetchReposReduser from "./fetchReposReduser";
 import optionsSelectedReduser from "./optionsSelectedReduser";
+import resultReduser from "./resultReduser";
 
 export const store = configureStore({
   reducer: {
     popularReposState:fetchReposReduser,
-    optionsSelected:optionsSelectedReduser
+    optionsSelected:optionsSelectedReduser,
+    battle:battleReduser,
+    result:resultReduser
   }
 })
 

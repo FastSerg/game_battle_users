@@ -1,4 +1,4 @@
-import {createSlice,} from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 
 type ProfileProps = {
   loading: boolean
@@ -12,7 +12,7 @@ const initialState:ProfileProps = {
 }
 
 export const optionsSelectedReduser = createSlice({
-  name:'load',
+  name:'options',
   initialState,
   reducers:{ 
     loading: (state,action) => {state.loading = action.payload},

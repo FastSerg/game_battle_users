@@ -1,4 +1,12 @@
-import React, { useState } from 'react'
+import {
+    addPlayerOne,
+    addPlayerOneImg,
+    addPlayerTwo,
+    addPlayerTwoImg,
+    resetUsers,
+} from 'Components/redux/battleReduser'
+import { useAppSelector } from 'Components/redux/hooks'
+import { useDispatch } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
 import PlayerInput from './PlayerInput'
 import PlayerPreview from './PlayerPreview'
@@ -6,31 +14,21 @@ import PlayerPreview from './PlayerPreview'
 type Props = {}
 
 const Battle = (props: Props) => {
-    const [playerOne, setPlayerOne] = useState<string>('')
-    const [playerTwo, setPlayerTwo] = useState<string>('')
-    const [playerOneImg, setPlayerOneImg] = useState<string>('')
-    const [playerTwoImg, setPlayerTwoImg] = useState<string>('')
+    const playerOne = useAppSelector((state) => state.battle.playerOne)
+    const playerTwo = useAppSelector((state) => state.battle.playerTwo)
+    const playerOneImg = useAppSelector((state) => state.battle.playerOneImg)
+    const playerTwoImg = useAppSelector((state) => state.battle.playerTwoImg)
 
+    const dispatch = useDispatch()
     const location = useLocation()
-
-    const handleSubmit = (id: string, userName: string) => {
-        let img = `https://github.com/${userName}.png?size=200`
-        if (id === 'playerOne') {
-            setPlayerOne(userName)
-            setPlayerOneImg(img)
-        } else if (id === 'playerTwo') {
-            setPlayerTwo(userName)
-            setPlayerTwoImg(img)
-        }
-    }
 
     const handleReset = (id: string) => {
         if (id === 'playerOne') {
-            setPlayerOne('')
-            setPlayerOneImg('')
+            dispatch(addPlayerOne(''))
+            dispatch(addPlayerOneImg(''))
         } else {
-            setPlayerTwo('')
-            setPlayerTwoImg('')
+            dispatch(addPlayerTwo(''))
+            dispatch(addPlayerTwoImg(''))
         }
     }
 
@@ -38,11 +36,7 @@ const Battle = (props: Props) => {
         <div className="container">
             <div className="row">
                 {!playerOneImg ? (
-                    <PlayerInput
-                        label={'Player 1'}
-                        id={'playerOne'}
-                        onSubmit={handleSubmit}
-                    />
+                    <PlayerInput label={'Player 1'} id={'playerOne'} />
                 ) : (
                     <PlayerPreview playerImg={playerOneImg} player={playerOne}>
                         <button
@@ -55,11 +49,7 @@ const Battle = (props: Props) => {
                 )}
 
                 {!playerTwoImg ? (
-                    <PlayerInput
-                        label={'Player 2'}
-                        id={'playerTwo'}
-                        onSubmit={handleSubmit}
-                    />
+                    <PlayerInput label={'Player 2'} id={'playerTwo'} />
                 ) : (
                     <PlayerPreview playerImg={playerTwoImg} player={playerTwo}>
                         <button
@@ -80,6 +70,7 @@ const Battle = (props: Props) => {
                             pathname: `${location.pathname}/results`,
                             search: `?playerOne=${playerOne}&playerTwo=${playerTwo}`,
                         }}
+                        onClick={() => dispatch(resetUsers())}
                     >
                         Battle
                     </Link>

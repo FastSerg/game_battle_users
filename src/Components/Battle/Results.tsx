@@ -1,48 +1,27 @@
 import { startBattle } from 'Components/api'
 import Preloader from 'Components/Popular/Preloader'
-import React, { useEffect, useState } from 'react'
+
+import { useAppSelector } from 'Components/redux/hooks'
+import {
+    addLoser,
+    addWinner,
+    catchError,
+    isLoading,
+} from 'Components/redux/resultReduser'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
 import ErrorMessage from './ErrorMessage'
 import Player from './Player'
 
 type Props = {}
 
-type ProfileProps = {
-    profile: {
-        login: string
-        avatar_url: string
-        location: string
-        name: string
-        company: string
-        public_repos: string
-        following: number
-        followers: number
-        blog: string
-    }
-    score: number
-}
-
-const objPlayer = {
-    profile: {
-        login: '',
-        avatar_url: '',
-        location: '',
-        name: '',
-        company: '',
-        public_repos: '',
-        following: 0,
-        followers: 0,
-        blog: 'string',
-    },
-    score: 0,
-}
-
 const Results = (props: Props) => {
-    const [winner, setWinner] = useState<ProfileProps>(objPlayer)
-    const [loser, setLoser] = useState<ProfileProps>(objPlayer)
-    const [loading, setLoading] = useState<boolean>(false)
-    const [error, setError] = useState('')
-
+    const winner = useAppSelector((state) => state.result.winner)
+    const loser = useAppSelector((state) => state.result.loser)
+    const error = useAppSelector((state) => state.result.error)
+    const loading = useAppSelector((state) => state.result.loading)
+    const dispatch = useDispatch()
     const location = useLocation()
 
     useEffect(() => {
@@ -52,15 +31,15 @@ const Results = (props: Props) => {
 
         if (playerOne && playerTwo) {
             startBattle([playerOne, playerTwo]).then(([winner, loser]: any) => {
-                setWinner(winner)
-                setLoser(loser)
-                setLoading(true)
+                dispatch(addWinner(winner))
+                dispatch(addLoser(loser))
+                dispatch(isLoading(true))
             })
         } else {
-            setError('No value winner or loser!')
-            setLoading(false)
+            catchError('No value winner or loser!')
+            dispatch(isLoading(false))
         }
-    }, [location.search])
+    }, [location.search, dispatch])
 
     return (
         <div>
