@@ -49,36 +49,12 @@ const Results = (props: Props) => {
                 <>
                     <div className="row">
                         {loading ? (
-                            <Player
-                                winnerOrLoser={'Winner'}
-                                login={winner.profile.login}
-                                avatarImg={winner.profile.avatar_url}
-                                profileName={winner.profile.name}
-                                company={winner.profile.company}
-                                reposPublic={winner.profile.public_repos}
-                                following={winner.profile.following}
-                                followers={winner.profile.followers}
-                                blog={winner.profile.blog}
-                                location={winner.profile.location}
-                                scorePlayer={winner.score}
-                            />
+                            <Player title={'Winner'} winnerOrLoser={winner} />
                         ) : (
                             <Preloader />
                         )}
                         {loading ? (
-                            <Player
-                                winnerOrLoser={'Loser'}
-                                login={loser.profile.login}
-                                avatarImg={loser.profile.avatar_url}
-                                profileName={loser.profile.name}
-                                company={loser.profile.company}
-                                reposPublic={loser.profile.public_repos}
-                                following={loser.profile.following}
-                                followers={loser.profile.followers}
-                                blog={loser.profile.blog}
-                                location={loser.profile.location}
-                                scorePlayer={loser.score}
-                            />
+                            <Player title={'Loser'} winnerOrLoser={loser} />
                         ) : (
                             <Preloader />
                         )}

@@ -33,9 +33,9 @@ const SelectedLanguages = (props: Props) => {
     useEffect(() => {
         if (!comparisonState) {
             dispatch(loading(true))
-            dispatch(fetchPopularRepos(languageSate))
+            dispatch(fetchPopularRepos(categoryQuery))
         }
-    }, [dispatch, comparisonState, languageSate])
+    }, [dispatch, comparisonState, categoryQuery])
 
     const onSelectLanguage = (language: string) => {
         languageSate === language

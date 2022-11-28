@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-type ProfileProps = {
+export type ProfileProps = {
   winner:{profile: {
       login: string
       avatar_url: string

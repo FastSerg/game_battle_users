@@ -2,49 +2,52 @@ import React from 'react'
 import PlayerPreview from './PlayerPreview'
 
 type Props = {
-    winnerOrLoser: string
-    login: string
-    avatarImg: string
-    blog: string
-    reposPublic: string
-    followers: number
-    following: number
-    profileName: string
-    company: string
-    location: string
-    scorePlayer: number
+    title: string
+    winnerOrLoser: {
+        profile: {
+            login: string
+            avatar_url: string
+            location: string
+            name: string
+            company: string
+            public_repos: string
+            following: number
+            followers: number
+            blog: string
+        }
+        score: number
+    }
 }
 
-const Player = ({
-    winnerOrLoser,
-    login,
-    avatarImg,
-    blog,
-    reposPublic,
-    followers,
-    following,
-    profileName,
-    company,
-    location,
-    scorePlayer,
-}: Props) => {
+const Player = ({ winnerOrLoser, title }: Props) => {
     return (
-        <PlayerPreview player={login} playerImg={avatarImg}>
+        <PlayerPreview
+            player={winnerOrLoser.profile.login}
+            playerImg={winnerOrLoser.profile.avatar_url}
+        >
             <ul className="space-list-items">
-                {<h2 className="text-message"> {winnerOrLoser}</h2>}
-                {profileName && <li>Profile name: {profileName}</li>}
-                {location && <li>Location: {location}</li>}
-                {company && <li>Company: {company}</li>}
-                <li>Followers: {followers}</li>
-                <li>Following: {following}</li>
-                <li>Public Repos: {reposPublic}</li>
-                {blog && (
+                {<h2 className="text-message"> {title}</h2>}
+                {winnerOrLoser.profile.name && (
+                    <li>Profile name: {winnerOrLoser.profile.name}</li>
+                )}
+                {winnerOrLoser.profile.location && (
+                    <li>Location: {winnerOrLoser.profile.location}</li>
+                )}
+                {winnerOrLoser.profile.company && (
+                    <li>Company: {winnerOrLoser.profile.company}</li>
+                )}
+                <li>Followers: {winnerOrLoser.profile.followers}</li>
+                <li>Following: {winnerOrLoser.profile.following}</li>
+                <li>Public Repos: {winnerOrLoser.profile.public_repos}</li>
+                {winnerOrLoser.profile.blog && (
                     <li>
-                        <a href={blog}>Blog: {blog}</a>
+                        <a href={winnerOrLoser.profile.blog}>
+                            Blog: {winnerOrLoser.profile.blog}
+                        </a>
                     </li>
                 )}
             </ul>
-            <h2 className="text-message">Score: {scorePlayer}</h2>
+            <h2 className="text-message">Score: {winnerOrLoser.score}</h2>
         </PlayerPreview>
     )
 }
